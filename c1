@@ -1,0 +1,13 @@
+const reducer = (state = 5) => {
+  return state;
+}
+
+// Redux methods are available from a Redux object
+// For example: Redux.createStore()
+// Define the store here:
+let store = Redux.createStore(reducer);
+
+//Here we create a Redux store variable that manages application state
+//All state management must be done through the Redux store
+//'.createStore()' requires a reducer function as an argument
+//All a reducer function does is take state as an argument and return state
