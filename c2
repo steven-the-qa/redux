@@ -1,0 +1,9 @@
+const store = Redux.createStore(
+  (state = 5) => state
+);
+
+// change code below this line
+let currentState = store.getState();
+
+//The 'store' variable now has inherited all the methods from the Redux Store Object
+//You can use another method called '.getState()' to get the current state
