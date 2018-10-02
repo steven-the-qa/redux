@@ -1,0 +1,28 @@
+const defaultState = {
+  user: 'CamperBot',
+  status: 'offline',
+  friends: '732,982',
+  community: 'freeCodeCamp'
+};
+
+const immutableReducer = (state = defaultState, action) => {
+  switch(action.type) {
+    case 'ONLINE':
+      // don't mutate state here or the tests will fail
+      let newObject = Object.assign({}, state);
+      newObject.status = 'online';
+      return newObject;
+    default:
+      return state;
+  }
+};
+
+const wakeUp = () => {
+  return {
+    type: 'ONLINE'
+  }
+};
+
+const store = Redux.createStore(immutableReducer);
+
+//We use the 'Object.assign()' method to create a copy of an object by mapping the properties of a source object to a target object
