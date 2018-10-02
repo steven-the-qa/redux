@@ -1,0 +1,46 @@
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
+
+const counterReducer = (state = 0, action) => {
+  switch(action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
+const authReducer = (state = {authenticated: false}, action) => {
+  switch(action.type) {
+    case LOGIN:
+      return {
+        authenticated: true
+      }
+    case LOGOUT:
+      return {
+        authenticated: false
+      }
+    default:
+      return state;
+  }
+};
+
+const rootReducer = Redux.combineReducers({
+  auth: authReducer,
+  count: counterReducer
+  });
+  // define the root reducer here
+
+const store = Redux.createStore(rootReducer);
+
+
+//You can use '.combineReducers()' to pass an object full of reducers to the root reducer, which will go in the store
+//The most important principal of Redux is that state is managed all in ONE PLACE
+//So even if we want to divide state among several reducers to handle it more easily, all of it will eventually go back to the store
+//The object containing the reducers will have keys that correspond to the function of the reducer in the app
+//Here we see there is a reducer for creating actions associated with authentication and with the counter
